@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /e/proyectos/sistema-RRHH/backend/src -type d -name *recruit* -o -type d -name *candidate* -o -type d -name *vacancy*)"
+    ]
+  }
+}
