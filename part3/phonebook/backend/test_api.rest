@@ -9,4 +9,12 @@ Content-Type: application/json
    "number": "093-334-3434"
 }
 ###
+PUT http://localhost:3001/api/persons/6a37ef0dc409c98c078d11a5
+Content-Type: application/json
+
+{  
+   "name": "Da",
+   "number": "093-334-3434"
+}
+###
 get http://localhost:3001/api/persons

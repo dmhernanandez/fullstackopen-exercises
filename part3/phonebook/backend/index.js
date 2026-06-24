@@ -65,9 +65,9 @@ app.get('/info', (request, response, next) => {
 app.post('/api/persons', async (request, response, next) => {
   
   const body = request.body
-  if (!body.number || !body.name) {
+ /* if (!body.number || !body.name) {
     return response.status(400).json({ error: 'name and number are required' })
-  }
+  }*/
 
   try {
     const existing = await Phonebook.findOne({ name: body.name })
@@ -95,8 +95,7 @@ app.put('/api/persons/:id', (request, response, next) => {
     name: request.body.name,
     number: request.body.number,
   }
-  console.log(newPhoneBook, request.params.id)
-  Phonebook.findByIdAndUpdate(request.params.id, newPhoneBook, { new: true })
+  Phonebook.findByIdAndUpdate(request.params.id, newPhoneBook, { new: true, runValidators: true, context: 'query' })
     .then(updated => response.json(updated))
     .catch(error => next(error))
 })

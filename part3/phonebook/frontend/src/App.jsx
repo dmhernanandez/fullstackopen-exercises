@@ -67,7 +67,7 @@ const App = () => {
             setMessageType(null)
           }, 5000)
         }).catch(error => {
-          setMessage(`error adding  ${person.name} `)
+          setMessage(error.response.data.error)
           setMessageType('error')
           setTimeout(() => {
             setMessage(null)
