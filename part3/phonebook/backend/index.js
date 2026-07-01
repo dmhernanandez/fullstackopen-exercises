@@ -15,10 +15,10 @@ morgan.token('body', (req, res) => {
 
 const errorHandler = (error, request, response, next) => {
   if( error.name === 'CastError'){
-      return response.status(400).json({ error: 'malformatted id'})
+      return response.status(400).json({ error: 'malformatted id' })
   }
   if (error.name === 'ValidationError'){
-     return response.status(400).json({error: error.message})
+     return response.status(400).json({ error: error.message })
   }
   next(error)
 }
@@ -46,7 +46,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Phonebook.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then(() => {
       return response.status(204).send()
     })
     .catch(error => next(error))
@@ -63,7 +63,7 @@ app.get('/info', (request, response, next) => {
 })
 
 app.post('/api/persons', async (request, response, next) => {
-  
+
   const body = request.body
  /* if (!body.number || !body.name) {
     return response.status(400).json({ error: 'name and number are required' })
